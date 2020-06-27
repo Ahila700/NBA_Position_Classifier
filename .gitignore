@@ -6,7 +6,7 @@ __pycache__/
 # C extensions
 *.so
 
-2000-2020_shot_charts.csv
+'2000-2020_shot_charts.csv'
 
 # Distribution / packaging
 .Python
