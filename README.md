@@ -10,7 +10,7 @@
 
 - Images: Collection of all the images gathered through eda including nba player shot charts and breakdown of the shot distribution over the years
 
-![](Images/Harden.png)
+![](Images/harden.png)
 
 ![](Images/Shooting_by_year.png)
 
@@ -24,12 +24,12 @@
 
 - Defensive stats and shot charts notebooks: these both served the same purpose. to take the data from the nba api and be able to convert it to values that could be used in a model in the future. You can see my breakdown of the court below as well as the breakdown of the values for each shot location
 
-![](Images/nba_court)
+![](Images/nba_court.png)
 
-![](Images/download%20(1))
+![](Images/download%20(1).png)
 
 - Modeling and EDA notebook: The final notebook, this has all of the EDA analysis, shot charts, shot value graphs, etc meant to get an idea of the features and be able to clean them up further if necessary. Also has all of the models for both 3 and 5 class models, including dummy classifier, XGBoost classifier, random forest classifier and support vector machine classifier and an analysis of the results using feature coefficients and confusion matrices
 
-![](Images/feature_importance_all)
+![](Images/feature_importance_all.png)
 
-![](Images/rf_5_class)
+![](Images/rf_5_class.png)
