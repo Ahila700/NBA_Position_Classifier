@@ -33,3 +33,19 @@
 ![](Images/feature_importance_all.png)
 
 ![](Images/rf_5_class.png)
+
+
+
+
+## Citations
+
+- http://savvastjortjoglou.com/nba-shot-sharts.html
+  - used to create nba court to map the data i have 
+  
+- https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
+  - code to find the most common word in a string (just done to simplify the work)
+  
+- https://www.123rf.com/photo_9886489_basketball-sequences.html
+- https://www.ppt-backgrounds.net/basketball/8193-basketball--basketball-court-wood---presentation-background-backgrounds.html
+- https://basketballphantom.com/position-play-basketball/
+  - images used in presentation
