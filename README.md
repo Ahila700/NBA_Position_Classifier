@@ -2,19 +2,19 @@
 
 
 ## Project Overview
---
+
 Classifying nba players by position is simple enough, taller players who get rebounds are centers, smaller players who get assists are point guards. But if you take size out of the equation, how good will it be? Well thats what im trying to figure out. The 5 positions themselves have been defined since the game started, with rare exceptions. But now i want to take the skill aspect, the shooting position of players, points, rebounds, assists, etc without any of the physical measurements and classify players. I started with the idea of using the generally defined 5 positions as the classes but as i went along and ran models, as well as thought more about it with the way the modern nba is played i found that actually a 3 class classification makes more sense. The reason is that power forwards and centers (the 2 big man positions) operate in very similar ways from where they shoot from to the high rebounds and blocks. and small forwards and shooting guards in the nba have become very malleable now a days and thinking back the only thing that made someone a shooting guard vs a small forward was if they were 6'7" or shorter/taller depending on position. So in my new model i decided to go with 3 classes, Point guards, who are very distinct in style, shooting guards and centers.
 
 Obviously the point of the classification model is to achieve a high accuracy but i had another idea in mind as well, what if my model is wrong, but its wrong because a player is just classified poorly. Well thats what i hope to achieve, i want a good model not based solely on how well it scores but how well it classifies players by their style of play. So someone like Dirk Nowitzki who shoots like a wing is classified as such and its important to know that when building a team around him. Because even if he is a big since he plays like a wing you need another big to complement him.
 
 ## Process and Data Gathering
---
+
 So to do this i used 2 main things from the nba api and basketball reference page. The shooting locations over a 20 year span which can be obtained through the nba api. And the yearly per game averages of the players obtained through the basketball reference pages. These along with a ton of feature engineering are the biggest factors in the modeling. (more to come in the future including defensive statistics).
 
 I got 650k+ shots for about 2000 nba players over the last 2 decades as well as their yearly per game stats,
 
 ## Github Repo Content
---
+
 - Images: Collection of all the images gathered through eda including nba player shot charts and breakdown of the shot distribution over the years
 
 ![](Images/harden.png)
@@ -42,15 +42,15 @@ I got 650k+ shots for about 2000 nba players over the last 2 decades as well as 
 ![](Images/rf_5_class.png)
 
 ## Reproduction instructions
---
+
 THe only thing that needs to be changed for some of the edas is to run the 2019/20 shot charts file instead of the 2000-2020 file since that was too large to include. When running models it can be run top to bottom for everything except the eda
 
 ## Conclusion
---
+
 The best model was a support vector machine that got about an 85% accuracy and did well with the f1 score as well. So the skill set of players does a relatively good job in classifying the players but the best aspect as I mentioned in the intro was for players like Dirk Nowitzki who is a big but got classified as a wing because of his diverse shooting profile. These are the players who I was most curious about because even though Dirk is classified as a big because of his skill set it is very important to use him like a wing and build around him like a wing. And thats what the Mavericks did in summer of 2010 signing another big in Tyson chandler who has the skill set of a big and that complementary skill was a big part of why the Mavericks won the championship in that same season. This is what i want to get out of the classifier to be able to input a player and output their actual position based on skill.
 
 ## Next Steps
---
+
 Tying in to the above building a front end to be able to enter a players name and output their position is a future goal. 
 
 Also being able to use an unsupervised model alongside this model so that it can compare players and find the most similar players regardless of position. This is somewhat apart from the actual classification but it is an important thing that can be used, especially for role players who generally only have 2/3 year contracts with teams. If someone comes in and fits in well with a team being able to find a similar replacement in case he leaves is important.
@@ -58,11 +58,11 @@ Also being able to use an unsupervised model alongside this model so that it can
 Lastly including more defensive metrics would be valuable to the data, especially for the comparison, as sometimes the offensive skill set is not what makes players valuable but instead the defensive skills. I already set up a dataframe with this in the notebook but due to time constraints and the fact that not all the players from my original model had the defensive tracking data meant it didnt have great value for the classification.
 
 ## Presentation Link
---
+
 https://docs.google.com/presentation/d/1DMR6XEHKJiMgS-UF0zZWL_KOSlFBALFC0YeXH5uleaI/edit?usp=sharing
 
 ## Citations
---
+
 - http://savvastjortjoglou.com/nba-shot-sharts.html
   - used to create nba court to map the data i have 
   
