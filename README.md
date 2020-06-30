@@ -45,7 +45,7 @@
 - https://www.geeksforgeeks.org/python-find-most-frequent-element-in-a-list/
   - code to find the most common word in a string (just done to simplify the work)
 
-- https://stackoverflow.com/questions/41592661/determining-the-most-contributing-features-for-svm-classifier-in-sklearn
+- https://stackoverflow.com/questions/44511636/matplotlib-plot-feature-importance-with-feature-names/49157712
   - code to find the feature importance of svm models
   
 - https://www.123rf.com/photo_9886489_basketball-sequences.html
