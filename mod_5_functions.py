@@ -3,6 +3,11 @@ from matplotlib.patches import Arc, Circle, Rectangle
 
 import matplotlib.pyplot as plt
 
+from scipy import spatial
+
+
+
+
 ## http://savvastjortjoglou.com/nba-shot-sharts.html
 
 ### code to draw nba court
@@ -74,6 +79,8 @@ def draw_court(ax=None, color='black', lw=2, outer_lines=False):
         ax.add_patch(element)
 
     return ax
+
+
 
 
 
@@ -156,3 +163,44 @@ def shooting_positions(df):
         'LOC_X'].count().to_frame().rename(columns={'LOC_X': 'restricted_area'})
 
     return left_corner_3, right_corner_3, left_wing_3, right_wing_3, center_3, deep_3, heave, left_baseline_deep_2, right_baseline_deep_2, left_wing_deep_2, right_wing_deep_2, left_baseline_short_2, right_baseline_short_2, left_wing_short_2, right_wing_short_2, deep_center_2, short_center_2, floater_range, in_the_paint, restricted_area
+
+
+
+
+
+
+# function to go through all of the players, and find the most similar player to them using euclidean distance
+
+def similarity(features, df):
+    
+    #creates a dictionary to store all the results
+    similarities = {}
+
+    #first the outer loop to go through all of the players
+    for i in range(0, len(df)):
+        
+        # initializing a random best similarity since we want to find the smallest number we use this as the initial
+        best_similarity = 1000000
+
+        # second loop to go through the players again
+        for j in range(0, len(df)):
+            
+            # make sure the same player doesnt match with himself as the similarity distance is 0
+            if i != j:
+                
+                # Finding the similarity score for each combination of players
+                similarity = spatial.distance.euclidean(features.iloc[i], features.iloc[j])
+
+                # if the score is lower then the previous it resets and saves that index
+                if similarity < best_similarity:
+                    
+                    # change the new best similarity
+                    best_similarity = similarity
+                    
+                    # save the index of that similarity
+                    holder = j
+
+        # store the player with his most comparable player
+        similarities[df.iloc[i].Player] = df.iloc[holder].Player
+        
+    return similarities
