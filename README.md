@@ -7,6 +7,12 @@ Classifying nba players by position is simple enough, taller players who get reb
 
 Obviously the point of the classification model is to achieve a high accuracy but i had another idea in mind as well, what if my model is wrong, but its wrong because a player is just classified poorly. Well thats what i hope to achieve, i want a good model not based solely on how well it scores but how well it classifies players by their style of play. So someone like Dirk Nowitzki who shoots like a wing is classified as such and its important to know that when building a team around him. Because even if he is a big since he plays like a wing you need another big to complement him.
 
+So now that the classification was done i wanted to look at using these same stats to compare players regardless of position. The reason for this is that some players fit very well with a team and because contracts generally don’t run much longer than 2 or 3 years being able to find similar players is really important for teams to build every year and maintain continuity with their style.
+
+So using euclidean distance as a measure of similarity i found the most similar player for every player in the dataset. I want to note that I only used the 2019/20 season for this because I wanted this to be for active nba players only so that current teams could be able to use this. 
+
+ 
+
 ## Process and Data Gathering
 
 So to do this i used 2 main things from the nba api and basketball reference page. The shooting locations over a 20 year span which can be obtained through the nba api. And the yearly per game averages of the players obtained through the basketball reference pages. These along with a ton of feature engineering are the biggest factors in the modeling. (more to come in the future including defensive statistics).
@@ -25,11 +31,7 @@ I got 650k+ shots for about 2000 nba players over the last 2 decades as well as 
 
 - mod_5_functions: python file with the large functions that were used in the notebooks. meant to keep the notebooks themselves much clearner and be able to slim down the large notebooks
 
-- nba_data_gathering notebook: gathering all the available data from the nba_api. Gathered shot charts from 2000 to 2020 but because the file was too large to include in the github i added a smaller file with shot charts from just the last season, this can be used as a replacement to run all the code 
-
-- bbref_data_gathering notebook: gathering the player bios for the last 20 years, this include points, rebounds, assists, field goal %, etc
-
-- Defensive stats and shot charts notebooks: these both served the same purpose. to take the data from the nba api and be able to convert it to values that could be used in a model in the future. You can see my breakdown of the court below as well as the breakdown of the values for each shot location
+- Player Classification data gather - combination of all the data gathering and cleaning in the project for the classification modeling. This includes, gathering shot chart data through the nba api, scraping data from basketball reference, and cleaning and merging the data between those 2 sites for use in the final modeling.
 
 ![](Images/nba_court.png)
 
@@ -41,21 +43,24 @@ I got 650k+ shots for about 2000 nba players over the last 2 decades as well as 
 
 ![](Images/rf_5_class.png)
 
+- Player Comparison data gather - combination of all the data gathering and cleaning in the project for the comparison modeling. This includes, gathering shot chart and defensive data through the nba api, scraping data from basketball reference, and cleaning and merging the data between those 2 sites for use in the final modeling.
+
+- Player comparison modeling - In the end the defensive stats ended up doing less to help than harm the data. Because the defensive tracking data is not that new it cut down the player base from 500 to less than 300 and because of this it ended up being left out of the final model. Similarity score was used, with euclidean distance as that gave the best results to compare players.
+
+![](Images/Harden_Doncic_shot_comparison.png)
+
+- app.py - Streamlit front end local site to use to be able to input a player name (has to be entered properly) and output their classified position, the most similar player and the comparison of the shot charts between them and the most similar player to see why that player was chosen.
+
 ## Reproduction instructions
 
-THe only thing that needs to be changed for some of the edas is to run the 2019/20 shot charts file instead of the 2000-2020 file since that was too large to include. When running models it can be run top to bottom for everything except the eda
+The all notebooks can be run top to bottom as they are. 
+
+To completely reproduce the data, it must first start with the data gathering and cleaning which can be run from top to bottom. And then the modeling for classification and comparison can be run afterwards. 
 
 ## Conclusion
 
 The best model was a support vector machine that got about an 85% accuracy and did well with the f1 score as well. So the skill set of players does a relatively good job in classifying the players but the best aspect as I mentioned in the intro was for players like Dirk Nowitzki who is a big but got classified as a wing because of his diverse shooting profile. These are the players who I was most curious about because even though Dirk is classified as a big because of his skill set it is very important to use him like a wing and build around him like a wing. And thats what the Mavericks did in summer of 2010 signing another big in Tyson chandler who has the skill set of a big and that complementary skill was a big part of why the Mavericks won the championship in that same season. This is what i want to get out of the classifier to be able to input a player and output their actual position based on skill.
 
-## Next Steps
-
-Tying in to the above building a front end to be able to enter a players name and output their position is a future goal. 
-
-Also being able to use an unsupervised model alongside this model so that it can compare players and find the most similar players regardless of position. This is somewhat apart from the actual classification but it is an important thing that can be used, especially for role players who generally only have 2/3 year contracts with teams. If someone comes in and fits in well with a team being able to find a similar replacement in case he leaves is important.
-
-Lastly including more defensive metrics would be valuable to the data, especially for the comparison, as sometimes the offensive skill set is not what makes players valuable but instead the defensive skills. I already set up a dataframe with this in the notebook but due to time constraints and the fact that not all the players from my original model had the defensive tracking data meant it didnt have great value for the classification.
 
 ## Presentation Link
 
