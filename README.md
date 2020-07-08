@@ -12,7 +12,7 @@ So now that the classification was done i wanted to look at using these same sta
 So using euclidean distance as a measure of similarity i found the most similar player for every player in the dataset. I want to note that I only used the 2019/20 season for this because I wanted this to be for active nba players only so that current teams could be able to use this. 
 
  
-
+ 
 ## Process and Data Gathering
 
 So to do this i used 2 main things from the nba api and basketball reference page. The shooting locations over a 20 year span which can be obtained through the nba api. And the yearly per game averages of the players obtained through the basketball reference pages. These along with a ton of feature engineering are the biggest factors in the modeling. (more to come in the future including defensive statistics).
