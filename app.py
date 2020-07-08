@@ -11,6 +11,9 @@ import matplotlib.pyplot as plt
 
 from matplotlib.patches import Arc, Circle, Rectangle
 
+import re
+import string
+
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -18,14 +21,32 @@ warnings.filterwarnings('ignore')
 
 st.title("NBA Position Classifier")
 st.markdown("This application is a Streamlit dashboard that can be used to check the new position of a modern NBA player as "
-            "well as the most similar player to him in the league. Just enter his name below:")
+            "well as the most similar player to him in the league. Just enter his name below (If there is any punctuation"  
+            " in the players name, replace it with nothing exs: P.J. Tucker -> PJ Tucker, Shai Gilgeous-Alexander -> Shai GilgeousAlexander):")
 
  
 # importing csv file
-df = pd.read_csv('csv_files/Final_df.csv', index_col = 0)
+df = pd.read_csv('csv_files/Player_comparison_wo_defense_df.csv', index_col = 0)
 
 # importing csv file for shot charts
 shot_charts = pd.read_csv('csv_files/2019-20_nba_shot_charts.csv', index_col = 0)
+
+## Have to clean the names on the shot_charts to what i cleaned the ones on the df file. 
+
+
+def clean_names(name):
+    name = re.sub('[%s]' % re.escape(string.punctuation), '', name)
+    name = re.sub('ć', 'c', name)
+    name = re.sub('Ć', 'C', name)
+    name = re.sub('Ž', 'Z', name)
+    name = re.sub('č', 'c', name)
+    name = re.sub('Č', 'C', name)
+    return name
+
+# creating an object that applys the cleaning function to all of the rows of a column instead of on the column
+cleaning = lambda x: clean_names(x)
+
+shot_charts['PLAYER_NAME'] = pd.DataFrame(shot_charts.PLAYER_NAME.apply(cleaning))
 
 
 #loading pickled model
