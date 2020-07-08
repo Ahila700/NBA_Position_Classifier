@@ -81,9 +81,10 @@ if st.button('Submit'):
     st.write('The Most Similar Player is: ' + Similar_player)
     
     plt.figure(figsize=(12,11))
-    plt.scatter(shot_chart.LOC_X, shot_chart.LOC_Y, marker = 'o')
-    plt.scatter(shot_chart2.LOC_X, shot_chart2.LOC_Y, marker = 'x', alpha = .75)
+    plt.scatter(shot_chart.LOC_X, shot_chart.LOC_Y, marker = 'o', label = player)
+    plt.scatter(shot_chart2.LOC_X, shot_chart2.LOC_Y, marker = 'x', alpha = .75, label = Similar_player)
     plt.title('Shotchart Comparison', fontdict = {'fontsize': 20})
+    plt.legend(prop={'size': 12})
     draw_court(outer_lines=True)
     plt.xlim(-300,300)
     plt.ylim(-100,500)
