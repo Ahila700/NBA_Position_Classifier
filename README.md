@@ -67,6 +67,10 @@ The best model was a support vector machine that got about an 85% accuracy and d
 
 https://docs.google.com/presentation/d/1DMR6XEHKJiMgS-UF0zZWL_KOSlFBALFC0YeXH5uleaI/edit?usp=sharing
 
+## Medium Article
+
+https://antoniohila.medium.com/nba-player-comparison-and-position-classifier-85094a3ef9f
+
 ## Citations
 
 - http://savvastjortjoglou.com/nba-shot-sharts.html
