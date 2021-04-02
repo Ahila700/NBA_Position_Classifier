@@ -49,7 +49,7 @@ I got 650k+ shots for about 2000 nba players over the last 2 decades as well as 
 
 ![](Images/Harden_Doncic_shot_comparison.png)
 
-- app.py - Streamlit front end local site to use to be able to input a player name (has to be entered properly) and output their classified position, the most similar player and the comparison of the shot charts between them and the most similar player to see why that player was chosen.
+- App (Streamlit) - Front-end local site to use to be able to input a player name (has to be entered properly) and output their classified position, the most similar player and the comparison of the shot charts between them and the most similar player to see why that player was chosen.
 
 ## Reproduction instructions
 
