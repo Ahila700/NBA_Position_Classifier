@@ -1,4 +1,4 @@
-# NBA_Position_Classifier
+# NBA Position Classifier
 
 
 ## Project Overview
