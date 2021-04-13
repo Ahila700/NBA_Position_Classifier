@@ -61,6 +61,10 @@ To completely reproduce the data, it must first start with the data gathering an
 
 The best model was a support vector machine that got about an 85% accuracy and did well with the f1 score as well. So the skill set of players does a relatively good job in classifying the players but the best aspect as I mentioned in the intro was for players like Dirk Nowitzki who is a big but got classified as a wing because of his diverse shooting profile. These are the players who I was most curious about because even though Dirk is classified as a big because of his skill set it is very important to use him like a wing and build around him like a wing. And thats what the Mavericks did in summer of 2010 signing another big in Tyson chandler who has the skill set of a big and that complementary skill was a big part of why the Mavericks won the championship in that same season. This is what i want to get out of the classifier to be able to input a player and output their actual position based on skill.
 
+## Future Steps
+
+One big thing I would like to improve on is to weigh the different seasons as we get further away from the present. One of the worries I had going in was that the game has changed over time. So giving more weight to shot selection of players from 2010-2020 in the model as opposed to 2000-2010 would, in my opinion, give the model more accuracy. 
+
 
 
 ## Presentation Link
